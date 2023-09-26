@@ -1,17 +1,20 @@
 # EXPERIMENT-06-INTERRUPT-GENERATION-USING-PUSHBUTTON-AND-SIMULATING-THE-OUTPUT
 
-### Aim:
+### Aim :
+
 To Interface a push button and generate an interrupt , simulate it using an led and simuate it on  proteus 
 
-### Components required:
+### Components required :
+
 STM32 CUBE IDE, Proteus 8 simulator .
 
-### Theory:
+### Theory :
 
 ARM v7 Core supports multiple great features for handling exceptions and interrupts. Which includes the Nested Vectored Interrupt Controller (NVIC).
 
-Micro-Coded Architecture So that interrupt stacking, entry, and exit are done automatically in hardware. Which offloads this work overhead from the CPU
-### Processor Mode
+Micro-Coded Architecture So that interrupt stacking, entry, and exit are done automatically in hardware. Which offloads this work overhead from the CPU.
+
+### Processor Mode :
 
 The processor mode can change when exceptions occur. And it can be in one of the following modes:
 Thread Mode: Which is entered on reset.
@@ -32,7 +35,9 @@ The diagram below shows how the GPIO pins are connected to the 16 interrupt line
 One important thing to note here is that same number pins are connected to line with the same number. All of these then join to form a single line. Additionally, we can not use two pins one one line at the same time. For example out of PA1, PB1, PC1, PD1, PE1, PF1 and PG1 you can only use a single pin out of all these. This is because they are all connected to the same line EXTI1. However you can use PA1 and PA2 at the same time as they are connected with different lines.
 
 Now each of these lines EXTI0-EXTI15 can be used to trigger an interrupt on different modes of the signal : rising edge, falling edge or rising_falling edge.
-## Procedure:
+
+## Procedure :
+
  1. click on STM 32 CUBE IDE, the following screen will appear 
  ![image](https://user-images.githubusercontent.com/36288975/226189166-ac10578c-c059-40e7-8b80-9f84f64bf088.png)
 
@@ -85,18 +90,41 @@ https://engineeringxpert.com/wp-content/uploads/2022/04/26.png
 
 ![image](https://user-images.githubusercontent.com/36288975/233856904-99eb708a-c907-4595-9025-c9dbd89b8879.png)
 
-
   
-
 ## STM 32 CUBE PROGRAM :
 
+### DEVELOPED BY : ABRIN NISHA A
+### REG NO : 212222230005
 
+```
+#include "main.h"
+#include"stdbool.h"
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if((GPIO_Pin == GPIO_PIN_0))
+	{
+		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
+	}
+}
+```
 
 ## Output screen shots of proteus  :
+
+### LED OFF :
+
+![Screenshot 2023-09-26 094334](https://github.com/Abrinnisha6/EXPERIMENT-06-INTERRUPT-GENERATION-USING-PUSHBUTTON-AND-SIMULATING-THE-OUTPUT-/assets/118889454/40e7b083-9489-4962-9e32-8709e79c8f53)
+
+ ### LED ON :
  
+ ![Screenshot 2023-09-26 094421](https://github.com/Abrinnisha6/EXPERIMENT-06-INTERRUPT-GENERATION-USING-PUSHBUTTON-AND-SIMULATING-THE-OUTPUT-/assets/118889454/d4d58579-3159-4d48-9eb0-68b783fbc043)
+
  
- ## CIRCUIT DIAGRAM (EXPORT THE GRAPHICS TO PDF AND ADD THE SCREEN SHOT HERE): 
- 
+ ## CIRCUIT DIAGRAM (EXPORT THE GRAPHICS TO PDF AND ADD THE SCREEN SHOT HERE) :
+
+ ![Screenshot 2023-09-26 093314](https://github.com/Abrinnisha6/EXPERIMENT-06-INTERRUPT-GENERATION-USING-PUSHBUTTON-AND-SIMULATING-THE-OUTPUT-/assets/118889454/1cb0fa50-b1d4-4b31-b52a-dba10bf4868b)
+
  
 ## Result :
-Interfacing a push button and interrupt genrateion is simulated using proteus 
+
+Interfacing a push button and interrupt genrateion is simulated using proteus.
